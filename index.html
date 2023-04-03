@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--Link to the CSS-->
+    <link href="./assets/css/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--This is the nav bar. It has a button to access prior highscores. It has a current score that will be shown once start button is clicked. It also has a time left that will be shown once the start button is clicked.-->
+    <nav id="top-section">
+        <button id="high-score" id="view-high-scores">View Highscores</button>
+        <div id="high-scores-container" class="hide">
+            <ul id="high-scores-list"></ul>
+        </div>
+        <h4 id="score">Score: </h4>
+        <h4 id="timer">Time: </h4>
+    </nav>
+    <!--This is where the title and sentence telling player what to do is located.-->
+    <div class="main-text">
+        <header id="top-text">
+            <h1 id="questionIndicator">Michael's Music Trivia Challenge</h1>
+        </header>
+        <p id="middle-text"> This is the hardest quiz you will ever take. You have a limited amount of time to answer
+            the questions. The
+            faster you go the more points you recieve!</p>
+    </div>
+    <!--This is where the player clicks a button and the game starts. -->
+    <div id="start-game-container">
+        <button id="start-button">Start</button>
+    </div>
+    <!--This is where the actual game will appear-->
+    <div id="the-game">
+        <!--Where the question will be on the screen-->
+        <div id="question-container">
+            <!--Where the question text will be-->
+            <div id="question"></div>
+        </div>
+        <!--Where the answer choices will be.-->
+        <div id="answers"></div>
+        <!--Where the save button will be once the game is finished.-->
+        <div id="save-button"></div>
+    </div>
+    <!--Link to the Javascript-->
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

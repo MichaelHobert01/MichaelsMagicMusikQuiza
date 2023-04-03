@@ -1,0 +1,45 @@
+#top-section {
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace; 
+}
+
+#top-text {
+    display: flex;
+    justify-content: center;
+    font-family: monospace;  
+}
+
+#middle-text {
+    display: flex; 
+    justify-content: center; 
+    padding-left: 300px;
+    padding-right: 300px; 
+    font-family: monospace;
+}
+
+#start-game-container {
+    display: flex; 
+    justify-content: center; 
+}
+
+#start-game {
+    color: red;
+    font-family: monospace;
+    border-radius: 10px; 
+}
+
+#start-game:hover {
+    color: white;
+    font-size-adjust: 2px;
+    background-color: red;
+    border-color: blue;
+}
+
+#score {
+    display: none; 
+}
+
+#timer {
+    display: none; 
+}
