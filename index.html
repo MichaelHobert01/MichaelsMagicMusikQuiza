@@ -13,10 +13,7 @@
 <body>
     <!--This is the nav bar. It has a button to access prior highscores. It has a current score that will be shown once start button is clicked. It also has a time left that will be shown once the start button is clicked.-->
     <nav id="top-section">
-        <button id="high-score" id="view-high-scores">View Highscores</button>
-        <div id="high-scores-container" class="hide">
-            <ul id="high-scores-list"></ul>
-        </div>
+        <a href="high-scores.html" id="high-score" id="view-high-scores">View Highscores</a>
         <h4 id="score">Score: </h4>
         <h4 id="timer">Time: </h4>
     </nav>
@@ -45,6 +42,11 @@
         <!--Where the save button will be once the game is finished.-->
         <div id="save-button"></div>
     </div>
+    <form id="save-form">
+        <label for="initials">Enter your initials:</label>
+        <input type="text" id="initials" name="initials" required>
+        <button type="submit">Save score</button>
+      </form>
     <!--Link to the Javascript-->
     <script src="./assets/js/script.js"></script>
 </body>

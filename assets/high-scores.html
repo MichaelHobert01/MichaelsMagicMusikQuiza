@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+        const scoresList = document.getElementById("scores-list");
+
+        if (highScores.length > 0) {
+            const scoresHTML = highScores
+                .map((score) => `<li>${score.initials}: ${score.score}</li>`)
+                .join("");
+            scoresList.innerHTML = scoresHTML;
+        } else {
+            scoresList.innerHTML = "<li>No high scores available</li>";
+        }
+    });
+
+</script>
+
+</html>

@@ -39,6 +39,7 @@ const questionContainer = document.getElementById("question-container");
 const question = document.getElementById("question");
 const answerChoices = document.getElementById("answers");
 const saveButton = document.getElementById("save-button");
+const saveInitals = document.getElementById("save-initals");
 
 
 // Prefunctionate (probably not even a word) variables
@@ -53,7 +54,18 @@ let timerIntervalId;
 // update timer function 
 
 function updateTimer() {
+    timer.textContent = `Time left: ${initTime}`; 
+}
 
+// end game function 
+
+function endGame() {
+    clearInterval(timerIntervalId);
+    questionContainer.style.display = "none";
+    answerChoices.style.display = "none";
+    saveButton.style.display = "block";
+    score.textContent = `Score: ${initScore}`; 
+    showSaveInitals(); 
 }
 
 
@@ -62,110 +74,90 @@ function updateTimer() {
 
 startButton.addEventListener('click', function (event) {
     event.preventDefault()
-    
+
     // removes current displayed elements and replaces it with the questions.
-    function displayQuestion(quiz) {
+    function displayQuestion() {
         mainText[0].style.display = "none";
         startButton.style.display = 'none';
 
 
-        question.textContent = quiz.text; 
+        question.textContent = quiz[currentQuestionIndex].text;
 
 
-        answerChoices.innerHTML = ""; 
+        answerChoices.innerHTML = "";
 
         // Loop through the answer choices in the current object
-        for (let i = 0; i < quiz.choices.length; i++) {
-            
+        for (let i = 0; i < quiz[currentQuestionIndex].choices.length; i++) {
+
             // Create a new button element for each answer choice 
             var answerButton = document.createElement("button");
-            
+
 
             // Set the text of the button to the answer choice
-            answerButton.textContent = quiz.choices[i];
+            answerButton.textContent = quiz[currentQuestionIndex].choices[i];
 
 
             // Event listener
             answerButton.addEventListener("click", function () {
                 // Check if the selected answer is correct
-                if (this.textContent === quiz.answer) {
+                if (this.textContent === quiz[currentQuestionIndex].answer) {
                     // Increment the score 
-                    initScore++; 
+                    initScore++;
                     // Update the score on the screen 
-                    score.textContent = "Score: " + initScore;
-                
+                    score.textContent = `Score: ${initScore}`;
+
                     // Displays the next question
-                    currentQuestionIndex++; 
+                    currentQuestionIndex++;
 
                     // Check if the end of the quiz has been reached
 
                     if (currentQuestionIndex >= quiz.length) {
                         endGame();
                     } else {
-                        displayQuestion(quiz[currentQuestionIndex]);
+                        displayQuestion();
                     } 
-                
-                }
+                    
 
-            })
+                } else {
+                    initTime -= 10; 
+                    updateTimer();
+                } 
+
+            });
+            answerChoices.appendChild(answerButton); 
         }
 
 
     };
 
     // calls the displayQuestion function 
-    displayQuestion(); 
+    displayQuestion();
 
     // displays the answer choices
     function displayAnswerChoices() {
-        answerChoices.style.display = "block"; 
+        answerChoices.style.display = "block";
     }
 
     // calls the displayAnserChoices function 
-    displayAnswerChoices(); 
+    displayAnswerChoices();
 
 
     // starts the timer by adding a interval 
     function startTimer() {
-        timerIntervalId = setInterval(function() {
-          if (initTime > 0) {
-            initTime -= 1;
-            updateTimer(); // Call the updateTimer function on each iteration
-          } else {
-            clearInterval(timerIntervalId); // Stop the timer when it reaches 0
-          }
+        timerIntervalId = setInterval(function () {
+            if (initTime > 0) {
+                initTime -= 1;
+                updateTimer(); // Call the updateTimer function on each iteration
+            } else {
+                clearInterval(timerIntervalId); // Stop the timer when it reaches 0
+            }
         }, 1000);
-      }    
+    }
 
 
     // calls the startTimer function
-    startTimer(); 
+    startTimer();
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Initialize Zone
-
-// init() {
-
-// }
-
-
 
 
